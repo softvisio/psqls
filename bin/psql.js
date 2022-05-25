@@ -29,11 +29,7 @@ if ( connect && remoteHostname ) {
             "servername": remoteHostname,
         } );
 
-        socket.once( "error", e => {
-            console.log( e + "" );
-
-            process.exit( 1 );
-        } );
+        socket.once( "error", e => resolve() );
 
         socket.once( "secureConnect", () => resolve( socket ) );
     } );
