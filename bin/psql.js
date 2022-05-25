@@ -6,7 +6,8 @@ import tls from "node:tls";
 import childProcess from "node:child_process";
 import fs from "node:fs";
 
-var args = [],
+var psql = "/usr/bin/psql",
+    args = [],
     localHostname = "127.0.0.1",
     localPort,
     remoteHostname = process.env.PGHOST,
@@ -59,11 +60,11 @@ args.push( "--set", `REAL_HOST=${remoteHostname}` );
 
 parsePgpass();
 
-const psql = childProcess.spawn( "psql", args, {
+const proc = childProcess.spawn( psql, args, {
     "stdio": "inherit",
 } );
 
-psql.on( "exit", code => process.exit( code ) );
+proc.on( "exit", code => process.exit( code ) );
 
 function parseArgv () {
     const argv = [...process.argv.slice( 2 )];
