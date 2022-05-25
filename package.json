@@ -1,0 +1,25 @@
+{
+    "name": "psqls",
+    "version": "0.0.0",
+    "private": true,
+    "description": "SSL wrapper for psql",
+    "keywords": [
+        "psql",
+        "psqls"
+    ],
+    "homepage": "https://github.com/zdm/psqls",
+    "bugs": {
+        "url": "https://github.com/<REPO>/issues",
+        "email": "zdm@softvisio.net"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/<REPO>.git"
+    },
+    "license": "ISC",
+    "author": "zdm <zdm@softvisio.net>",
+    "type": "module",
+    "bin": {
+        "psqls": "bin/psqls.js"
+    }
+}
