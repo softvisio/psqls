@@ -17,11 +17,11 @@ var psql = "/usr/bin/psql",
     remoteSocket,
     proc;
 
-parseArgv();
+const connect = parseArgv();
 
 remoteDatabase ||= remoteUsername;
 
-if ( remoteHostname ) {
+if ( connect && remoteHostname ) {
     remoteSocket = await new Promise( resolve => {
         const socket = tls.connect( {
             "host": remoteHostname,
@@ -83,6 +83,9 @@ function parseArgv () {
     for ( let n = 0; n < argv.length; n++ ) {
         const arg = argv[n];
 
+        // help, version
+        if ( arg === "-?" || arg.startsWith( "--help" ) || arg === "-V" || arg === "--version" ) return;
+
         if ( arg === "-h" || arg === "--host" ) {
             remoteHostname = argv[n + 1];
 
@@ -133,6 +136,8 @@ function parseArgv () {
             args.push( arg );
         }
     }
+
+    return true;
 }
 
 function parsePgpass () {
