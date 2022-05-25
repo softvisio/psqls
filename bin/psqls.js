@@ -55,6 +55,7 @@ args.push( "--host", localHostname );
 args.push( "--port", localPort );
 args.push( "--username", remoteUsername );
 if ( remoteDatabase !== remoteUsername ) args.push( "--dbname", remoteDatabase );
+args.push( "--set", `PROMPT_HOST=${remoteHostname}` );
 
 parsePgpass();
 
