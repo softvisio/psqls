@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.2.0 (2022-05-25)
+
+Features:
+
+-   feat: psql replacement
+
 ### 1.1.0 (2022-05-25)
 
 Features:
