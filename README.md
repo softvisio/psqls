@@ -1,6 +1,6 @@
 <!-- !!! DO NOT EDIT, THIS FILE IS GENERATED AUTOMATICALLY !!!  -->
 
-> :information_source: Please, see the full project documentation here: [https://softvisio.github.io/psql/](https://softvisio.github.io/psql/).
+> :information_source: Please, see the full project documentation here: [https://softvisio.github.io/psqls/](https://softvisio.github.io/psqls/).
 
 # Introduction
 
@@ -11,7 +11,7 @@ Allows for `psql` to connect to the `PostgreSQL` server over SSL tunnel. Can be 
 ## Install
 
 ```shell
-npm i -g @softvisio/psql
+npm i -g @softvisio/psqls
 ```
 
 ## Usage
