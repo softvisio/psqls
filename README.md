@@ -6,14 +6,14 @@
 
 SSL / TLS wrapper for `psql`.
 
-Allows `psql` to connect to the `PostgreSQL` server over SSL tunnel. Can be used, when `PostgreSQL` server is located behind the `SSL` load balancer.
+Allows for `psql` to connect to the `PostgreSQL` server over SSL tunnel. Can be used when `PostgreSQL` server is located behind the `SSL` load balancer.
 
 ## Install
 
 ```shell
-npm i @softvisio/psqls
+npm i -g @softvisio/psqls
 ```
 
 ## Usage
 
-Usage the same as for original `psql`.
+Usage is the same as for original `psql`.
