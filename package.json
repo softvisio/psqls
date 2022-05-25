@@ -1,6 +1,6 @@
 {
     "name": "@softvisio/psql",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "SSL wrapper for psql",
     "keywords": [
         "psql"
