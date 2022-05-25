@@ -17,24 +17,12 @@ var psql = "/usr/bin/psql",
     remoteSocket,
     proc;
 
-const connect = parseArgv();
+const connectRemote = parseArgv();
 
 remoteDatabase ||= remoteUsername;
 
-if ( connect && remoteHostname ) {
-    remoteSocket = await new Promise( resolve => {
-        const socket = tls.connect( {
-            "host": remoteHostname,
-            "port": remotePort,
-            "servername": remoteHostname,
-        } );
-
-        socket.setKeepAlive( true, 60000 );
-
-        socket.once( "error", e => resolve() );
-
-        socket.once( "secureConnect", () => resolve( socket ) );
-    } );
+if ( connectRemote && remoteHostname ) {
+    remoteSocket = await connect();
 }
 
 if ( remoteSocket ) {
@@ -50,8 +38,14 @@ if ( remoteSocket ) {
         server.listen( null, "127.0.0.1" );
     } );
 
-    server.on( "connection", localSocket => {
+    server.on( "connection", async localSocket => {
         localSocket.setKeepAlive( true, 60000 );
+
+        if ( remoteSocket.destroyed ) {
+            remoteSocket = await connect();
+
+            if ( !remoteSocket ) process.exit( 1 );
+        }
 
         localSocket.pipe( remoteSocket );
         remoteSocket.pipe( localSocket );
@@ -163,4 +157,20 @@ function parsePgpass () {
 
         return;
     }
+}
+
+async function connect () {
+    return new Promise( resolve => {
+        const socket = tls.connect( {
+            "host": remoteHostname,
+            "port": remotePort,
+            "servername": remoteHostname,
+        } );
+
+        socket.setKeepAlive( true, 60000 );
+
+        socket.once( "error", e => resolve() );
+
+        socket.once( "secureConnect", () => resolve( socket ) );
+    } );
 }
