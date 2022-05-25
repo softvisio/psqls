@@ -173,6 +173,12 @@ async function connect () {
 
         socket.once( "error", e => resolve() );
 
-        socket.once( "secureConnect", () => resolve( socket ) );
+        socket.once( "secureConnect", () => {
+            socket.off( "error", resolve );
+
+            socket.once( "error", e => {} );
+
+            resolve( socket );
+        } );
     } );
 }
