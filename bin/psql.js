@@ -13,61 +13,72 @@ var psql = "/usr/bin/psql",
     remoteHostname = process.env.PGHOST,
     remotePort = process.env.PGPORT || "5432",
     remoteUsername = process.env.PGUSER || process.env.USER,
-    remoteDatabase;
+    remoteDatabase,
+    remoteSocket,
+    proc;
 
 parseArgv();
 
 remoteDatabase ||= remoteUsername;
 
-const remoteSocket = await new Promise( resolve => {
-    const socket = tls.connect( {
-        "host": remoteHostname,
-        "port": remotePort,
-        "servername": remoteHostname,
+if ( remoteHostname ) {
+    remoteSocket = await new Promise( resolve => {
+        const socket = tls.connect( {
+            "host": remoteHostname,
+            "port": remotePort,
+            "servername": remoteHostname,
+        } );
+
+        socket.once( "error", e => {
+            console.log( e + "" );
+
+            process.exit( 1 );
+        } );
+
+        socket.once( "secureConnect", () => resolve( socket ) );
+    } );
+}
+
+if ( remoteSocket ) {
+    const server = await new Promise( resolve => {
+        const server = new net.Server();
+
+        server.once( "listening", () => {
+            localPort = server.address().port;
+
+            resolve( server );
+        } );
+
+        server.listen( null, "127.0.0.1" );
     } );
 
-    socket.once( "error", e => {
-        console.log( e + "" );
-
-        process.exit( 1 );
+    server.once( "connection", localSocket => {
+        localSocket.pipe( remoteSocket );
+        remoteSocket.pipe( localSocket );
     } );
 
-    socket.once( "secureConnect", () => resolve( socket ) );
-} );
+    args.push( "--host", localHostname );
+    args.push( "--port", localPort );
+    args.push( "--username", remoteUsername );
+    if ( remoteDatabase !== remoteUsername ) args.push( "--dbname", remoteDatabase );
+    args.push( "--set", `REAL_HOST=${remoteHostname}` );
 
-const server = await new Promise( resolve => {
-    const server = new net.Server();
+    parsePgpass();
 
-    server.once( "listening", () => {
-        localPort = server.address().port;
-
-        resolve( server );
+    proc = childProcess.spawn( psql, args, {
+        "stdio": "inherit",
     } );
-
-    server.listen( null, "127.0.0.1" );
-} );
-
-server.once( "connection", localSocket => {
-    localSocket.pipe( remoteSocket );
-    remoteSocket.pipe( localSocket );
-} );
-
-args.push( "--host", localHostname );
-args.push( "--port", localPort );
-args.push( "--username", remoteUsername );
-if ( remoteDatabase !== remoteUsername ) args.push( "--dbname", remoteDatabase );
-args.push( "--set", `REAL_HOST=${remoteHostname}` );
-
-parsePgpass();
-
-const proc = childProcess.spawn( psql, args, {
-    "stdio": "inherit",
-} );
+}
+else {
+    proc = childProcess.spawn( psql, process.argv.slice( 2 ), {
+        "stdio": "inherit",
+    } );
+}
 
 proc.on( "exit", code => process.exit( code ) );
 
 function parseArgv () {
-    const argv = [...process.argv.slice( 2 )];
+    const argv = process.argv.slice( 2 );
 
     for ( let n = 0; n < argv.length; n++ ) {
         const arg = argv[n];
