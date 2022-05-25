@@ -6,6 +6,8 @@ import tls from "node:tls";
 import childProcess from "node:child_process";
 import fs from "node:fs";
 
+const SOCKET_KEEP_ALIVE_TIMEOUT = 60_000;
+
 var psql = "/usr/bin/psql",
     args = [],
     localHostname = "127.0.0.1",
@@ -39,7 +41,7 @@ if ( remoteSocket ) {
     } );
 
     server.on( "connection", async localSocket => {
-        localSocket.setKeepAlive( true, 60000 );
+        localSocket.setKeepAlive( true, SOCKET_KEEP_ALIVE_TIMEOUT );
 
         if ( remoteSocket.destroyed ) {
             remoteSocket = await connect();
@@ -167,7 +169,7 @@ async function connect () {
             "servername": remoteHostname,
         } );
 
-        socket.setKeepAlive( true, 60000 );
+        socket.setKeepAlive( true, SOCKET_KEEP_ALIVE_TIMEOUT );
 
         socket.once( "error", e => resolve() );
 
