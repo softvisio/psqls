@@ -29,6 +29,8 @@ if ( connect && remoteHostname ) {
             "servername": remoteHostname,
         } );
 
+        socket.setKeepAlive( true, 60000 );
+
         socket.once( "error", e => resolve() );
 
         socket.once( "secureConnect", () => resolve( socket ) );
@@ -48,7 +50,9 @@ if ( remoteSocket ) {
         server.listen( null, "127.0.0.1" );
     } );
 
-    server.once( "connection", localSocket => {
+    server.on( "connection", localSocket => {
+        localSocket.setKeepAlive( true, 60000 );
+
         localSocket.pipe( remoteSocket );
         remoteSocket.pipe( localSocket );
     } );
