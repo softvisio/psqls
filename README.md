@@ -11,7 +11,7 @@ Allows for `psql` to connect to the `PostgreSQL` server over SSL tunnel. Can be 
 ## Install
 
 ```shell
-npm i -g @softvisio/psqls
+npm i --location=global @softvisio/psqls
 ```
 
 ## Usage
