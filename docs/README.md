@@ -13,3 +13,13 @@ npm i -g @softvisio/psqls
 ## Usage
 
 Usage is the same as for original `psql`.
+
+For tunneled connections is sets `REAL_HOST` variable, which can be used in your `psqlrc` as following:
+
+```text
+\if :{?REAL_HOST}
+    \set PROMPT1 '[pg://%x%[%033[1;31m%]%n%[%033[0;31m%]@%[%033[1;31m%]%:REAL_HOST:%[%033[0;31m%]/%[%033[0;37m%]%/]%[%033[1;33m%]%#%[%033[0m%] '
+\else
+    \set PROMPT1 '[pg://%x%[%033[1;31m%]%n%[%033[0;31m%]@%[%033[1;31m%]%M%[%033[0;31m%]/%[%033[0;37m%]%/]%[%033[1;33m%]%#%[%033[0m%] '
+\endif
+```
