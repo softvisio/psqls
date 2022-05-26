@@ -1,5 +1,15 @@
 # Changelog
 
+### 1.3.0 (2022-05-26)
+
+Features:
+
+-   feat: package renamed
+
+Fixes:
+
+-   fix: reconnect
+
 ### 1.2.1 (2022-05-25)
 
 Fixes:
