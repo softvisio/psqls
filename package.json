@@ -1,11 +1,13 @@
 {
     "name": "@softvisio/psqls",
     "version": "1.2.1",
-    "description": "SSL wrapper for psql",
+    "description": "TLS wrapper for psql",
     "keywords": [
-        "psql"
+        "psql",
+        "tls",
+        "ssl"
     ],
-    "homepage": "https://github.com/softvisio/psqls",
+    "homepage": "https://softvisio.github.io/psqls",
     "bugs": {
         "url": "https://github.com/softvisio/psqls/issues",
         "email": "zdm <zdm@softvisio.net>"

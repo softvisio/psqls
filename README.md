@@ -18,7 +18,7 @@ npm i -g @softvisio/psqls
 
 Usage is the same as for original `psql`.
 
-For tunneled connections is sets `REAL_HOST` variable, which can be used in your `psqlrc` as following:
+For tunneled connections is sets `REAL_HOST` variable, which can be used in your `.psqlrc` as following:
 
 ```text
 \if :{?REAL_HOST}
