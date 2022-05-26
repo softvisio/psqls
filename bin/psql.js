@@ -5,6 +5,7 @@ import net from "node:net";
 import tls from "node:tls";
 import childProcess from "node:child_process";
 import fs from "node:fs";
+import stream from "node:stream";
 
 const SOCKET_KEEP_ALIVE_TIMEOUT = 60_000;
 
@@ -43,14 +44,16 @@ if ( remoteSocket ) {
     server.on( "connection", async localSocket => {
         localSocket.setKeepAlive( true, SOCKET_KEEP_ALIVE_TIMEOUT );
 
-        if ( remoteSocket.destroyed ) {
+        if ( !remoteSocket ) {
             remoteSocket = await connect();
 
             if ( !remoteSocket ) process.exit( 1 );
         }
 
-        localSocket.pipe( remoteSocket );
-        remoteSocket.pipe( localSocket );
+        stream.pipeline( localSocket, remoteSocket, () => {} );
+        stream.pipeline( remoteSocket, localSocket, () => {} );
+
+        remoteSocket = null;
     } );
 
     args.push( "--host", localHostname );
