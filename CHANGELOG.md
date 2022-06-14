@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.3.2 (2022-06-14)
+
+Fixes:
+
+-   fix: do not create tunnel if remote hostname os ip address
+
 ### 1.3.1 (2022-05-26)
 
 Fixes:
