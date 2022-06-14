@@ -24,7 +24,7 @@ const connectRemote = parseArgv();
 
 remoteDatabase ||= remoteUsername;
 
-if ( connectRemote && remoteHostname ) {
+if ( connectRemote && remoteHostname && !net.isIP( remoteHostname ) ) {
     remoteSocket = await connect();
 }
 
