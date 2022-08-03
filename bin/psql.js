@@ -9,6 +9,8 @@ import stream from "node:stream";
 
 const SOCKET_KEEP_ALIVE_TIMEOUT = 60_000;
 
+process.on( "SIGINT", () => {} );
+
 var psql = "/usr/bin/psql",
     args = [],
     localHostname = "127.0.0.1",
