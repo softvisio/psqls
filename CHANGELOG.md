@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.3.3 (2022-08-03)
+
+Fixes:
+
+-   fix: sigint handler
+
 ### 1.3.2 (2022-06-14)
 
 Fixes:
