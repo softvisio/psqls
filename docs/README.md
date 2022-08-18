@@ -7,7 +7,7 @@ Allows for `psql` to connect to the `PostgreSQL` server over SSL tunnel. Can be 
 ## Install
 
 ```shell
-npm i --location=global @softvisio/psqls
+npm install --global @softvisio/psqls
 ```
 
 ## Usage
