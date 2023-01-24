@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.3.5 (2023-01-24)
+
+Fixes:
+
+-   fix: git repo relocated
+
 ### 1.3.4 (2022-08-18)
 
 Fixes:
