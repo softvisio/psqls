@@ -1,6 +1,6 @@
 {
     "name": "@softvisio/psqls",
-    "version": "1.3.10",
+    "version": "1.3.11",
     "description": "TLS wrapper for psql",
     "keywords": [
         "psql",
