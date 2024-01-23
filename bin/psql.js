@@ -153,7 +153,7 @@ function parsePgpass () {
 
         if ( !line || line.startsWith( "#" ) ) continue;
 
-        const [hostname, port, database, username, password] = line.split( ":" );
+        const [ hostname, port, database, username, password ] = line.split( ":" );
 
         if ( hostname !== "*" && hostname !== remoteHostname ) continue;
         if ( port !== "*" && port !== remotePort ) continue;
