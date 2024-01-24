@@ -62,7 +62,7 @@ if ( remoteSocket ) {
     args.push( "--port", localPort );
     args.push( "--username", remoteUsername );
     if ( remoteDatabase !== remoteUsername ) args.push( "--dbname", remoteDatabase );
-    args.push( "--set", `REAL_HOST=${remoteHostname}` );
+    args.push( "--set", `REAL_HOST=${ remoteHostname }` );
 
     parsePgpass();
 
@@ -82,28 +82,28 @@ function parseArgv () {
     const argv = process.argv.slice( 2 );
 
     for ( let n = 0; n < argv.length; n++ ) {
-        const arg = argv[n];
+        const arg = argv[ n ];
 
         // help, version
         if ( arg === "-?" || arg.startsWith( "--help" ) || arg === "-V" || arg === "--version" ) return;
 
         if ( arg === "-h" || arg === "--host" ) {
-            remoteHostname = argv[n + 1];
+            remoteHostname = argv[ n + 1 ];
 
             n++;
         }
         else if ( arg === "-p" || arg === "--port" ) {
-            remotePort = argv[n + 1];
+            remotePort = argv[ n + 1 ];
 
             n++;
         }
         else if ( arg === "-U" || arg === "--username" ) {
-            remoteUsername = argv[n + 1];
+            remoteUsername = argv[ n + 1 ];
 
             n++;
         }
         else if ( arg === "-d" || arg === "--dbname" ) {
-            remoteDatabase = argv[n + 1];
+            remoteDatabase = argv[ n + 1 ];
 
             n++;
         }
