@@ -7,17 +7,17 @@
         "tls",
         "ssl"
     ],
-    "homepage": "https://softvisio.github.io/psqls",
+    "homepage": "https://softvisio.github.io/psqls/",
     "bugs": {
         "url": "https://github.com/softvisio/psqls/issues",
-        "email": "zdm <zdm@softvisio.net>"
+        "email": "root <root@softvisio.net>"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/softvisio/psqls.git"
     },
     "license": "ISC",
-    "author": "zdm <zdm@softvisio.net>",
+    "author": "root <root@softvisio.net>",
     "type": "module",
     "bin": {
         "psql": "bin/psql.js"
