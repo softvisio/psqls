@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.3.15 (2024-08-09)
+
+Fixes:
+
+-   fix: package-lock add
+
 ### 1.3.14 (2024-05-29)
 
 Fixes:
