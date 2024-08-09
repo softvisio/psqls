@@ -1,0 +1,16 @@
+{
+    "name": "@softvisio/psqls",
+    "version": "1.3.14",
+    "lockfileVersion": 3,
+    "requires": true,
+    "packages": {
+        "": {
+            "name": "@softvisio/psqls",
+            "version": "1.3.14",
+            "license": "ISC",
+            "bin": {
+                "psql": "bin/psql.js"
+            }
+        }
+    }
+}
