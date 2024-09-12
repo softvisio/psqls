@@ -110,28 +110,28 @@ function parseArgv () {
 
         // equation
         else if ( arg.startsWith( "-h=" ) ) {
-            remoteHostname = arg.substring( 3 );
+            remoteHostname = arg.slice( 3 );
         }
         else if ( arg.startsWith( "--host=" ) ) {
-            remoteHostname = arg.substring( 7 );
+            remoteHostname = arg.slice( 7 );
         }
         else if ( arg.startsWith( "-p=" ) ) {
-            remotePort = arg.substring( 3 );
+            remotePort = arg.slice( 3 );
         }
         else if ( arg.startsWith( "--port=" ) ) {
-            remotePort = arg.substring( 7 );
+            remotePort = arg.slice( 7 );
         }
         else if ( arg.startsWith( "-U=" ) ) {
-            remoteUsername = arg.substring( 3 );
+            remoteUsername = arg.slice( 3 );
         }
         else if ( arg.startsWith( "--username=" ) ) {
-            remoteUsername = arg.substring( 11 );
+            remoteUsername = arg.slice( 11 );
         }
         else if ( arg.startsWith( "-d=" ) ) {
-            remoteDatabase = arg.substring( 3 );
+            remoteDatabase = arg.slice( 3 );
         }
         else if ( arg.startsWith( "--database=" ) ) {
-            remoteDatabase = arg.substring( 11 );
+            remoteDatabase = arg.slice( 11 );
         }
         else {
             args.push( arg );
