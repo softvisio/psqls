@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 // vim: ft=javascript
 
-import net from "node:net";
-import tls from "node:tls";
 import childProcess from "node:child_process";
 import fs from "node:fs";
+import net from "node:net";
 import stream from "node:stream";
+import tls from "node:tls";
 
 const SOCKET_KEEP_ALIVE_TIMEOUT = 60_000;
 
