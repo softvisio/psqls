@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.3.23 (2024-10-11)
+
+No notable changes since the previous release.
+
+[Full list of the changes](https://github.com/softvisio/psqls/compare/v1.3.22...v1.3.23)
+
 ### 1.3.22 (2024-10-06)
 
 Fixes:

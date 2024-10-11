@@ -1,6 +1,6 @@
 <!-- !!! DO NOT EDIT, THIS FILE IS GENERATED AUTOMATICALLY !!!  -->
 
-> :information_source: Please, see the full project documentation here: [https://softvisio.github.io/psqls/](https://softvisio.github.io/psqls/).
+> :information_source: Please, see the full project documentation here:<br>[https://softvisio.github.io/psqls/](https://softvisio.github.io/psqls/)
 
 # Introduction
 
