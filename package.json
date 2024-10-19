@@ -21,8 +21,5 @@
     "type": "module",
     "bin": {
         "psql": "bin/psql.js"
-    },
-    "scripts": {
-        "release": "softvisio-cli package release"
     }
 }
