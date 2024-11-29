@@ -1,5 +1,13 @@
 # Changelog
 
+### 1.3.28 (2024-11-29)
+
+Other changes:
+
+- chore: lint
+
+[Compare with the previous release: v1.3.27 ... v1.3.28](https://github.com/softvisio/psqls/compare/v1.3.27...v1.3.28)
+
 ### 1.3.27 (2024-11-10)
 
 Other changes:
