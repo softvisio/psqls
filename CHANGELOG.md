@@ -1,5 +1,13 @@
 # Changelog
 
+### 1.3.30 (2025-02-19)
+
+Other changes:
+
+- chore: update cli config
+
+Compare with the previous release: [`v1.3.29...v1.3.30`](https://github.com/softvisio/psqls/compare/v1.3.29...v1.3.30)
+
 ### 1.3.29 (2024-12-07)
 
 Other changes:
